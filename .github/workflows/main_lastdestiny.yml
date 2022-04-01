@@ -26,10 +26,10 @@ jobs:
         run: dotnet test .\red.gaius.lastdestiny.tests\
 
       - name: Build with dotnet
-        run: dotnet build .\red.gaius.lastdestiny.api\red.gaius.lastdestiny.api.csproj --configuration Release --runtime win-x86
+        run: dotnet build .\red.gaius.lastdestiny.api\red.gaius.lastdestiny.api.csproj --configuration Release --self-contained --runtime win-x86
 
       - name: dotnet publish
-        run: dotnet publish .\red.gaius.lastdestiny.api\red.gaius.lastdestiny.api.csproj --configuration Release --runtime win-x86 -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish .\red.gaius.lastdestiny.api\red.gaius.lastdestiny.api.csproj --configuration Release --self-contained --runtime win-x86 -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
