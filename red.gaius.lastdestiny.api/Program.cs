@@ -1,3 +1,4 @@
+using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 using Microsoft.ApplicationInsights.Extensibility.Implementation;
 using Microsoft.Extensions.Logging.ApplicationInsights;
 using Red.Gaius.LastDestiny.Services;
@@ -24,12 +25,16 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-builder.Services.AddApplicationInsightsTelemetry();
+var options = new ApplicationInsightsServiceOptions
+{
+    ConnectionString = builder.Configuration.GetConnectionString("ApplicationInsights"),
+};
+
+builder.Services.AddApplicationInsightsTelemetry(options: options);
 
 builder.Host.ConfigureLogging((context, builder) =>
  {
-     builder.AddApplicationInsights(
-        context.Configuration.GetConnectionString("ApplicationInsights"));
+     builder.AddApplicationInsights();
 
      // Capture all log-level entries from Program
      builder.AddFilter<ApplicationInsightsLoggerProvider>(
