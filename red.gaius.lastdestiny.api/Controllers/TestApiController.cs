@@ -8,20 +8,20 @@ namespace Red.Gaius.LastDestiny.Api.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
-public class WeatherForecastController : ControllerBase
+public class TestApiController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching",
     };
 
-    private readonly ILogger<WeatherForecastController> logger;
+    private readonly ILogger<TestApiController> logger;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="WeatherForecastController"/> class.
+    /// Initializes a new instance of the <see cref="TestApiController"/> class.
     /// </summary>
     /// <param name="logger">Logging service.</param>
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public TestApiController(ILogger<TestApiController> logger)
     {
         this.logger = logger;
     }
